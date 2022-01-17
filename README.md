@@ -103,4 +103,4 @@ This is a preliminary version of a syllabifier for Brazilian Portuguese that I w
 
 D. Silva, D. Braga e F. Resende Jr. (2008). Separação das sílabas e determinação da tonicidade no Português Brasileiro. XXVI Simpósio Brasileiro de Telecomunicações, páginas 1–5.
 
-Mans Hulden. 2009. Foma: a finite-state compiler andlibrary.  In Proceedings of the Demonstrations Session at EACL 2009, pages 29–32, Athens, Greece. Association for Computational Linguistics
+Mans Hulden. 2009. Foma: a finite-state compiler and library.  In Proceedings of the Demonstrations Session at EACL 2009, pages 29–32, Athens, Greece. Association for Computational Linguistics
