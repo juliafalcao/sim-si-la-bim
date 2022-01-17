@@ -61,14 +61,14 @@ The symbols considered as graphemes can be single letters or clusters of letters
 
 For organization purposes, each Case describes which graphemes will be joined with the vowel to form a syllable, or separated.
 
-| case   | action                                                                                           |   |
-|--------|--------------------------------------------------------------------------------------------------|---|
-| Case 1 | Vowel is separated from the next grapheme                                                        |   |
-| Case 2 | Vowel is joined with the next grapheme and separated from the subsequent   ones                  |   |
-| Case 3 | Vowel is joined with the previous grapheme and separated from the   following                    |   |
-| Case 4 | Vowel is joined with the previous and the next grapheme and separated   from the subsequent ones |   |
-| Case 5 | Vowel is joined with the following 2 graphemes and separated from the 3rd   onwards              |   |
-| Case 6 | Vowel is joined with the previous grapheme and all the following until   the end of the word     |   |
+| case   | action                                                                                           |
+|--------|--------------------------------------------------------------------------------------------------|
+| Case 1 | Vowel is separated from the next grapheme                                                        |
+| Case 2 | Vowel is joined with the next grapheme and separated from the subsequent   ones                  |
+| Case 3 | Vowel is joined with the previous grapheme and separated from the   following                    |
+| Case 4 | Vowel is joined with the previous and the next grapheme and separated   from the subsequent ones |
+| Case 5 | Vowel is joined with the following 2 graphemes and separated from the 3rd   onwards              |
+| Case 6 | Vowel is joined with the previous grapheme and all the following until   the end of the word     |
 
 
 ## how to use
