@@ -96,9 +96,8 @@ apply down> computacional
 com-pu-ta-cio-nal
 ```
 
-## conclusion
-
-This is a preliminary version of a syllabifier for Brazilian Portuguese 🇧🇷 that I wrote as an assignment for my Computational Morphology course. It implements all of the rules described in the paper, though some of them can still be improved upon and any issues encountered will be tracked in the [Issues](https://github.com/juliafalcao/sim-si-la-bim/issues) tab and hopefully fixed soon. I also hope to implement testing and validation with a proper word list to evaluate its accuracy.
+## conclu
+This is a preliminary version of a syllabifier for Brazilian Portuguese that I wrote as an assignment for my Computational Morphology course. It implements all of the rules described in the paper, though some of them can still be improved upon and any issues encountered will be tracked in the [Issues](https://github.com/juliafalcao/sim-si-la-bim/issues) tab and hopefully fixed soon. I also hope to implement testing and validation with a proper word list to evaluate its accuracy.
 
 ## references
 
