@@ -1,4 +1,4 @@
-# sim-si-la-bim
+# sim-si-la-bim 🌟
 A syllabifier for Brazilian Portuguese written in *foma*.
 
 ## intro
@@ -25,13 +25,22 @@ def VowelsExceptÃÕ V .o. ~[ ã | õ ];
 def Rule1Case1 [..] -> "-" || VowelsExceptÃÕ _ V;
 ```
 
-It is a rewrite rule that will insert a single hyphen (`[..] -> "-"`) into the space between a symbol that matches `VowelsExceptÃÕ` and another symbol that matches `V`. These two regular expressions have been defined based on Table 1 in the paper and translated below.
+It is a rewrite rule that will insert a single hyphen (`[..] -> "-"`) into the space between a symbol that matches `VowelsExceptÃÕ` and another symbol that matches `V`.
+
+`V` is the regex that matches vowels, defined based on Table 1 in the paper (translated below). It is defined in the beginning of the `syllabifier.foma` file. Assuming it has been loaded into *foma*, this single rule can be compiled as regex on its own and tested:
+
+```
+foma[0]: regex Rule1Case1;
+979 bytes. 3 states, 33 arcs, Cyclic.
+foma[1]: down aeronave
+a-eronave
+```
+
+All the rules have been defined in `syllabifier.foma` this way, as well as a couple of pre- and post-processing rules, and compiled into the final transducer that takes a word and returns the same word with hyphens where the syllable boundaries are ([demonstration in "how to use" section](#how-to-use)).
 
 ### symbols
 
 The symbols considered as graphemes can be single letters or clusters of letters that should be handled together. For example, `ca` and `ce` are in different groups because the consonant `c` varies in sound depending on the vowel, such as in the words "casa" [kasa] and "cedo" [sɛdu].
-
-
 
 
 | name | definition           | symbols                                                                      |
@@ -46,7 +55,12 @@ The symbols considered as graphemes can be single letters or clusters of letters
 
 \* Some other symbols used in the paper such as `SP` (whitespace) and `F` (line break) were instead handled as *foma*-style rules as those will work with only one word at a time.
 
+\** Auxiliary regexes have been defined before the relevant rules that need them, for readability purposes.
+
 ### cases
+
+For organization purposes, each Case describes which graphemes will be joined with the vowel to form a syllable, or separated.
+
 | case   | action                                                                                           |   |
 |--------|--------------------------------------------------------------------------------------------------|---|
 | Case 1 | Vowel is separated from the next grapheme                                                        |   |
@@ -65,7 +79,7 @@ The information on how to install *foma* is available in [its homepage](https://
 foma[0]: source syllabifier.foma
 ```
 
-With the source loaded, all of the rules will be compiled and the final Syllabifier transducer will be loaded and ready to use. In order to syllabify a word, the `apply down` shell can be used, and each word you input will be returned with hyphens separating the syllables.
+With the source loaded, all of the rules and the final Syllabifier transducer will be ready to use. In order to syllabify a word, the `apply down` shell can be used.
 
 ```
 foma[1]: apply down
@@ -75,14 +89,16 @@ a-e-ro-na-ve
 
 The word exemplified above, "aeronave" (aircraft), uses the first rule demonstrated in the previous section to define its first syllable, separating the vowels `a` from `e`. With the other rules already implemented, the transducer knows how to break apart the other syllables as well.
 
-It can also handle a sequence of words.
-
 ```
 apply down> morfologia
 mor-fo-lo-gi-a
 apply down> computacional
 com-pu-ta-cio-nal
 ```
+
+## conclusion
+
+This is a preliminary version of a syllabifier for Brazilian Portuguese 🇧🇷 that I wrote as an assignment for my Computational Morphology course. It implements all of the rules described in the paper, though some of them can still be improved upon and any issues encountered will be tracked in the [Issues](https://github.com/juliafalcao/sim-si-la-bim/issues) tab and hopefully fixed soon. I also hope to implement testing and validation with a proper word list to evaluate its accuracy.
 
 ## references
 
