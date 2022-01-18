@@ -111,7 +111,7 @@ def CleanEdgeMarkers "$" -> 0;
 def CleanDuplicated "-"+ @-> "-";
 def WE1 "-"+ @-> 0 || .#. _;
 def WE2 "-"+ @-> 0 || _ .#.;
-def CleanWordEdgeHyphens WE1 .o. WE2; # not working
+def CleanWordEdgeHyphens WE1 .o. WE2;
 
 def Cleanup CleanEdgeMarkers .o. CleanDuplicated .o. CleanWordEdgeHyphens;
 
