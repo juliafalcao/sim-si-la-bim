@@ -78,7 +78,7 @@ def Rule14Case1e [..] -> "-" || ? e _ e;
 def Rule14Case1i [..] -> "-" || ? i _ i;
 def Rule14Case1o [..] -> "-" || ? o _ o;
 def Rule14Case1u [..] -> "-" || ? u _ u;
-def Rule14Case1vv [..] -> "-" || ? [V | G] _ [V | G] [V | G];
+def Rule14Case1vv [..] -> "-" || ? V _ V V;
 def Rule14Case1 Rule14Case1a .o. Rule14Case1e .o. Rule14Case1i .o. Rule14Case1o .o. Rule14Case1u .o. Rule14Case1vv;
 
 def COFVG CO | f | v | g;
@@ -111,7 +111,7 @@ def CleanEdgeMarkers "$" -> 0;
 def CleanDuplicated "-"+ @-> "-";
 def WE1 "-"+ @-> 0 || .#. _;
 def WE2 "-"+ @-> 0 || _ .#.;
-def CleanWordEdgeHyphens WE1 .o. WE2;
+def CleanWordEdgeHyphens WE1 .o. WE2; # not working
 
 def Cleanup CleanEdgeMarkers .o. CleanDuplicated .o. CleanWordEdgeHyphens;
 
