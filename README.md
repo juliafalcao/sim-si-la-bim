@@ -11,10 +11,17 @@ A few syllabifier algorithms have been proposed for the language, including that
 
 In their algorithm, the rules are based on the vowel(s) being the nucleus of each syllable, and the algorithm checks each vowel and determines which symbols around it will be considered to form a syllable, and from which those will be separated.
 
-As an example, this is the first rule:
-![Rule 1](img/rule1.png)
+For example, this is the translated pseudocode of the first rule and the examples provided:
 
-What the if statement says is: if the vowel is in the initial position of a syllable, it is different from `ã` and `õ`, and the following symbol is a vowel (not a semi-vowel), then it is a Case 1.
+> ```
+> if V = p⁰ and V ≠ <ã>,<õ> and ^(+1) = V and ^(+1) != G then
+>    Case 1
+> end if
+> ```
+> Examples: _a-eronave, a-inda_
+
+
+What the conditional statement says is: if the vowel is in the initial position of a syllable, it is different from `ã` and `õ`, and the following symbol (`^(+1)`) is a vowel (and not a semi-vowel), then it is a Case 1.
 
 The Cases define what will be done with the vowel and the symbols around it; Case 1, for example, means the vowel will be separated from the following symbol.
 
@@ -36,6 +43,8 @@ foma[1]: down aeronave
 a-eronave
 ```
 
+In this example we see that the rule only matches with one part of the given word, the two first letters, and inserts a hyphen between them.
+
 All the rules have been defined in `syllabifier.foma` this way, as well as a couple of pre- and post-processing rules, and compiled into the final transducer that takes a word and returns the same word with hyphens where the syllable boundaries are ([demonstration in "how to use" section](#how-to-use)).
 
 ### symbols
@@ -47,10 +56,10 @@ The symbols considered as graphemes can be single letters or clusters of letters
 |------|----------------------|------------------------------------------------------------------------------|
 | V    | Vowels               | `a`,`e`,`o`,`á`,`é`,`ó`,`í`,`ú`,`ã`,`õ`,`â`,`ê`,`ô`,`à`,`ü`                                  |
 | G    | Semi-vowels          | `i`,`u`                                                                         |
-| C    | All consonants       | `lh`,`nh`,`CO`,`CF`,`CL`,`CN`                                                   |
+| C    | All consonants       | `lh`,`nh`, CO, CF, CL, CN                                                   |
 | CO   | Occlusive consonants | `p`,`t`,`ca`,`co`,`cu`,`que`,`qui`,`b`,`d`,`ga`,`go`,`gu`,`gue`,`gui` |
 | CF   | Fricative consonants | `f`,`v`,`s`,`ce`,`ci`,`ç`,`z`,`ss`,`ch`,`j`,`ge`,`gi`,`x`                    |
-| CL   | Liquid consonants    | `l` except `lh`,`r`,`rr`                                                         |
+| CL   | Liquid consonants    | `l` except `lh`, `r`, `rr`                                                         |
 | CN   | Nasal consonants     | `m`,`n`                                                                         |
 
 \* Some other symbols used in the paper such as `SP` (whitespace) and `F` (line break) were instead handled as *foma*-style rules as those will work with only one word at a time.
@@ -59,7 +68,7 @@ The symbols considered as graphemes can be single letters or clusters of letters
 
 ### cases
 
-For organization purposes, each Case describes which graphemes will be joined with the vowel to form a syllable, or separated.
+As organized in the paper, each Case describes which graphemes will be joined with the vowel to form a syllable, or separated.
 
 | case   | action                                                                                           |
 |--------|--------------------------------------------------------------------------------------------------|
@@ -73,13 +82,13 @@ For organization purposes, each Case describes which graphemes will be joined wi
 
 ## how to use
 
-The information on how to install *foma* is available in [its homepage](https://fomafst.github.io/).
+The information on how to install *foma* is available in [its homepage](https://fomafst.github.io/). The syllabifier source can be loaaded with the `foma` command line interface:
 
 ```
 foma[0]: source syllabifier.foma
 ```
 
-With the source loaded, all of the rules and the final Syllabifier transducer will be ready to use. In order to syllabify a word, the `apply down` shell can be used.
+Once loaded, all of the rules and the final Syllabifier transducer will be ready to use. In order to syllabify a word, the `apply down` shell can be used.
 
 ```
 foma[1]: apply down
@@ -87,7 +96,7 @@ apply down> aeronave
 a-e-ro-na-ve
 ```
 
-The word exemplified above, "aeronave" (aircraft), uses the first rule demonstrated in the previous section to define its first syllable, separating the vowels `a` from `e`. With the other rules already implemented, the transducer knows how to break apart the other syllables as well.
+The word exemplified above, "aeronave" (aircraft), uses the first rule demonstrated in the previous section to define its first syllable, separating the vowel `a` from `e`. With the other rules already implemented, the transducer knows how to break apart the other syllables as well.
 
 ```
 apply down> morfologia
@@ -99,8 +108,11 @@ com-pu-ta-cio-nal
 ## conclusion
 This is a preliminary version of a syllabifier for Brazilian Portuguese that I wrote as an assignment for my Computational Morphology course. It implements all of the rules described in the paper, though some of them can still be improved upon and any issues encountered will be tracked in the [Issues](https://github.com/juliafalcao/sim-si-la-bim/issues) tab and hopefully fixed soon. I also hope to implement testing and validation with a proper word list to evaluate its accuracy.
 
+### disclaimer
+The syllabifier is explicitly proposed for Brazilian Portuguese (BP) and not more generally for the Portuguese language because the rules for dividing syllables vary between BP and European Portuguese (EP) due to phonological variation. For example, some rising diphthongs in BP are realized as vowel hiatus in EU and thus EP separates the hiatus but not BP; the word "série", for example, would be "sé-rie" in BP but "sé-ri-e" in EP. For more information, Wikibooks has a [list of examples](https://pt.wikibooks.org/wiki/Portugu%C3%AAs/S%C3%ADlaba/Divis%C3%A3o).
+
 ## references
 
-D. Silva, D. Braga e F. Resende Jr. (2008). Separação das sílabas e determinação da tonicidade no Português Brasileiro. XXVI Simpósio Brasileiro de Telecomunicações, páginas 1–5.
+D. Silva, D. Braga e F. Resende Jr. 2008. _Separação das sílabas e determinação da tonicidade no Português Brasileiro._ XXVI Simpósio Brasileiro de Telecomunicações, páginas 1–5.
 
-Mans Hulden. 2009. Foma: a finite-state compiler and library.  In Proceedings of the Demonstrations Session at EACL 2009, pages 29–32, Athens, Greece. Association for Computational Linguistics
+Mans Hulden. 2009. _Foma: a finite-state compiler and library._ In Proceedings of the Demonstrations Session at EACL 2009, pages 29–32, Athens, Greece. Association for Computational Linguistics
