@@ -1,4 +1,4 @@
-# sim-si-la-bim
+# sim-si-la-bim 🌟
 A syllabifier for Brazilian Portuguese written in *foma*.
 
 ## intro
