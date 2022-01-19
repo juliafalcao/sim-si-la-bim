@@ -96,11 +96,7 @@ apply down> aeronave
 a-e-ro-na-ve
 ```
 
-The word exemplified above, "aeronave" (aircraft), uses the first rule demonstrated in the previous section to define its first syllable, separating the vowel `a` from `e`. With the other rules already implemented, the transducer knows how to break apart the other syllables as well.
-
-The same word exemplified before, "aeronave" (aircraft), now matches other rules besides the first one and has all of its syllables correctly
-
-
+The same word exemplified before, "aeronave" (aircraft), now matches other rules besides the first one and has all of its syllables correctly separated.
 
 ```
 apply down> morfologia
