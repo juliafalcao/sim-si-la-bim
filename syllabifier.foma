@@ -35,9 +35,9 @@ def Rule1Case1 [..] -> "-" || VowelsExceptÃÕ _ V;
 
 def Rule2Case5 [..] -> "-" || V C C _ CO;
 
-def GCNSRLX G | CN | [ s | r | l | x ];
-def CNotSH C .o. ~[ s | h ];
-def Rule3Case2 [..] -> "-" || V GCNSRLX _ CNotSH;
+def GCNSRLX G | CN | s | r | l | x ;
+def CNotSHR C .o. ~[ s | h | r];
+def Rule3Case2 [..] -> "-" || V GCNSRLX _ CNotSHR;
 
 def Rule4Case1 [..] -> "-" || V _ C C V;
 
@@ -45,7 +45,7 @@ def Rule5Case1 [..] -> "-" || V _ C [V | CL];
 
 def Rule6Case3 [..] -> "-" || C V _ C V;
 
-def Rule7Case4 [..] -> "-" || [C | G] G _ [m | n | r | s] ?; # not word final
+def Rule7Case4 [..] -> "-" || [C | G] G _ [m | n | r | s] ?;
 
 def Rule8Case5 [..] -> "-" || C V G s _ CO;
 
@@ -54,7 +54,7 @@ def Rule9Case4 [..] -> "-" || C V G _ V;
 def CV1 ? ? .o. C; # two-letter Cs
 def CV2 ? .o. C V; # one-letter C followed by V
 def CV [ CV1 | CV2 ];
-def Rule1Case30 [..] -> "-" || G V _ CV;
+def Rule10Case3 [..] -> "-" || G V _ CV;
 
 def Rule11Case3 [..] -> "-" || C _ G r C;
 
