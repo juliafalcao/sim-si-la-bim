@@ -1,11 +1,11 @@
-# sim-si-la-bim 🌟
+# sim-si-la-bim
 A syllabifier for Brazilian Portuguese written in *foma*.
 
 ## intro
 
-Text-to-speech (TTS) systems, the NLP task behind applications such as virtual assistants and screen readers, often performs syllabification as part of its text pre-processing pipeline. Syllabification is the process of breaking a given word into syllables and it's helpful for mapping a word into its phonetic transcription as well as to generate prosody, as for example, the tonic syllable in Brazilian Portuguese tends to have longer duration and intensity.
+Syllabification is the process of breaking a given word into syllables according to the language's rules, and it helps NLP systems achieve goals such as to map a word into its phonetic transcription, or to generate prosody.Text-to-speech (TTS) systems, the language generation technology behind applications such as virtual assistants and screen readers, often perform syllabification as part of its text pre-processing pipeline, for example.
 
-A few syllabifier algorithms have been proposed for the language, including that described in [(Silva et al.)](https://biblioteca.sbrt.org.br/articles/2721). Using that as reference, I have implemented the same rules in *foma*, a finite-state compiler and library.
+A few syllabifier algorithms have been proposed for Brazilian Portuguese, including that described in [(Silva et al.)](https://biblioteca.sbrt.org.br/articles/2721). Using that as reference, I have implemented the same rules in *foma*, a finite-state compiler and library.
 
 ## methodology
 
@@ -82,7 +82,7 @@ As organized in the paper, each Case describes which graphemes will be joined wi
 
 ## how to use
 
-The information on how to install *foma* is available in [its homepage](https://fomafst.github.io/). The syllabifier source can be loaaded with the `foma` command line interface:
+The information on how to install *foma* is available in [its homepage](https://fomafst.github.io/). The syllabifier source can be loaded with the `foma` command line interface:
 
 ```
 foma[0]: source syllabifier.foma
@@ -98,6 +98,10 @@ a-e-ro-na-ve
 
 The word exemplified above, "aeronave" (aircraft), uses the first rule demonstrated in the previous section to define its first syllable, separating the vowel `a` from `e`. With the other rules already implemented, the transducer knows how to break apart the other syllables as well.
 
+The same word exemplified before, "aeronave" (aircraft), now matches other rules besides the first one and has all of its syllables correctly
+
+
+
 ```
 apply down> morfologia
 mor-fo-lo-gi-a
@@ -106,10 +110,10 @@ com-pu-ta-cio-nal
 ```
 
 ## conclusion
-This is a preliminary version of a syllabifier for Brazilian Portuguese that I wrote as an assignment for my Computational Morphology course. It implements all of the rules described in the paper, though some of them can still be improved upon and any issues encountered will be tracked in the [Issues](https://github.com/juliafalcao/sim-si-la-bim/issues) tab and hopefully fixed soon. I also hope to implement testing and validation with a proper word list to evaluate its accuracy.
+This is a preliminary version of a syllabifier for Brazilian Portuguese that I wrote as an assignment for my Computational Morphology course. It implements all of the rules described in the paper, though some of them can still be improved upon and any issues encountered will be tracked in the [Issues](https://github.com/juliafalcao/sim-si-la-bim/issues) tab and hopefully fixed soon. I am also working on implementing validation with a proper word list and ground-truth syllables from dictionaries to evaluate accuracy.
 
 ### disclaimer
-The syllabifier is explicitly proposed for Brazilian Portuguese (BP) and not more generally for the Portuguese language because the rules for dividing syllables vary between BP and European Portuguese (EP) due to phonological variation. For example, some rising diphthongs in BP are realized as vowel hiatus in EU and thus EP separates the hiatus but not BP; the word "série", for example, would be "sé-rie" in BP but "sé-ri-e" in EP. For more information, Wikibooks has a [list of examples](https://pt.wikibooks.org/wiki/Portugu%C3%AAs/S%C3%ADlaba/Divis%C3%A3o).
+The syllabifier is explicitly proposed for Brazilian Portuguese (BP) and not more generally for the Portuguese language because the rules for dividing syllables vary between BP and European Portuguese (EP) due to phonological variation. For example, some rising diphthongs in BP are realized as vowel hiatus in EP and thus EP separates the hiatus but not BP; the word "série", for example, would be split as "sé-rie" in BP but "sé-ri-e" in EP. For more information, Wikibooks has a [list of examples](https://pt.wikibooks.org/wiki/Portugu%C3%AAs/S%C3%ADlaba/Divis%C3%A3o).
 
 ## references
 
