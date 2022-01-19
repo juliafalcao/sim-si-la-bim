@@ -45,9 +45,7 @@ def Rule5Case1 [..] -> "-" || V _ C [V | CL];
 
 def Rule6Case3 [..] -> "-" || C V _ C V;
 
-def WordFinalMNRS [ m | n | r | s ] "$";
-def CnotWordFinalMNRS C [0 | {$}] .o. ~WordFinalMNRS;
-def Rule7Case4 [..] -> "-" || [C | G] G _ CnotWordFinalMNRS;
+def Rule7Case4 [..] -> "-" || [C | G] G _ [m | n | r | s] ?; # not word final
 
 def Rule8Case5 [..] -> "-" || C V G s _ CO;
 
@@ -85,7 +83,7 @@ def COFVG CO | f | v | g;
 def Rule15Case1 [..] -> "-" || ? V _ COFVG [CL | CO] V;
 
 def Ci C .o. ?* i;
-def Rule16Case4 [..] -> "-" || Ci _ [a | o] "$";
+def Rule16Case4 [..] -> "-" || Ci _ [a | o] "$"; # TODO: fix bc I removed $
 
 # def Rule17Case6 ?*;
 
@@ -119,5 +117,5 @@ def Cleanup CleanEdgeMarkers .o. CleanDuplicated .o. CleanWordEdgeHyphens;
 # Final syllabifier transducer
 # ----------------------------
 
-def Syllabifier Prep .o. AllRules .o. Cleanup;
+def Syllabifier AllRules .o. Cleanup;
 regex Syllabifier;

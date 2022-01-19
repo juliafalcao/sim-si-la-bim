@@ -1,9 +1,9 @@
-# sim-si-la-bim 🌟
+# sim-si-la-bim
 A syllabifier for Brazilian Portuguese written in *foma*.
 
 ## intro
 
-Syllabification is the process of breaking a given word into syllables according to the language's rules, and it helps NLP systems achieve goals such as to map a word into its phonetic transcription, or to generate prosody.Text-to-speech (TTS) systems, the language generation technology behind applications such as virtual assistants and screen readers, often perform syllabification as part of its text pre-processing pipeline, for example.
+Syllabification is the process of breaking a given word into syllables according to the language's rules, and it helps NLP systems achieve goals such as to map a word into its phonetic transcription, or to generate prosody. Text-to-speech (TTS) systems, the language generation technology behind applications such as virtual assistants and screen readers, often perform syllabification as part of its text pre-processing pipeline, for example.
 
 A few syllabifier algorithms have been proposed for Brazilian Portuguese, including that described in [(Silva et al.)](https://biblioteca.sbrt.org.br/articles/2721). Using that as reference, I have implemented the same rules in *foma*, a finite-state compiler and library.
 
