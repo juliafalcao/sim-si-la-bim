@@ -100,7 +100,7 @@ def Rule19Case2 [..] -> "-" || ? V V _ C V;
 def Rule19Case1 [..] -> "-" || ? V V _ C [?-V];
 
 # All rules in the order they should be applied
-def AllRules Rule1Case1 .o. Rule2Case5 .o. Rule3Case2 .o. Rule4Case1 .o. Rule5Case1 .o. Rule6Case3 .o. Rule11Case3 .o. Rule7Case4 .o. Rule8Case5 .o. Rule9Case4 .o. Rule1Case30 .o. Rule12Case1 .o. Rule12Case4 .o. Rule13Case6 .o. Rule13Case5 .o. Rule14Case1 .o. Rule15Case1 .o. Rule16Case4 .o. Rule18Case1 .o. Rule18Case2 .o. Rule18Case5 .o. Rule19Case2 .o. Rule19Case1;
+def AllRules Rule1Case1 .o. Rule2Case5 .o. Rule3Case2 .o. Rule4Case1 .o. Rule5Case1 .o. Rule6Case3 .o. Rule11Case3 .o. Rule7Case4 .o. Rule8Case5 .o. Rule9Case4 .o. Rule10Case3 .o. Rule12Case1 .o. Rule12Case4 .o. Rule13Case6 .o. Rule13Case5 .o. Rule14Case1 .o. Rule15Case1 .o. Rule16Case4 .o. Rule18Case1 .o. Rule18Case2 .o. Rule18Case5 .o. Rule19Case2 .o. Rule19Case1;
 
 # -------------
 # Cleanup rules
