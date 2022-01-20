@@ -15,17 +15,6 @@ def CL [ l | r | rr ] .o. ~{lh}; # Liquids
 def CN [ m | n ]; # Nasals
 def C [ {lh} | {nh} | CO | CF | CF | CL | CN ]; # All consonants and clusters
 
-# -----------
-# Preparation
-# -----------
-
-# Add "$" in the beginning and the end of a word to simplify writing some rules
-def WordStart [..] -> "$" || .#. _;
-def WordEnd [..] -> "$" || _ .#.;
-def MarkBoundaries WordStart .o. WordEnd;
-
-def Prep MarkBoundaries;
-
 # ------------------
 # Rules to syllabify
 # ------------------
@@ -106,13 +95,12 @@ def AllRules Rule1Case1 .o. Rule2Case5 .o. Rule3Case2 .o. Rule4Case1 .o. Rule5Ca
 # Cleanup rules
 # -------------
 
-def CleanEdgeMarkers "$" -> 0;
 def CleanDuplicated "-"+ @-> "-";
 def WE1 "-"+ @-> 0 || .#. _;
 def WE2 "-"+ @-> 0 || _ .#.;
 def CleanWordEdgeHyphens WE1 .o. WE2;
 
-def Cleanup CleanEdgeMarkers .o. CleanDuplicated .o. CleanWordEdgeHyphens;
+def Cleanup CleanDuplicated .o. CleanWordEdgeHyphens;
 
 # ----------------------------
 # Final syllabifier transducer
