@@ -82,8 +82,9 @@ def Rule14Case1 Rule14Case1a .o. Rule14Case1e .o. Rule14Case1i .o. Rule14Case1o 
 def COFVG CO | f | v | g;
 def Rule15Case1 [..] -> "-" || ? V _ COFVG [CL | CO] V;
 
-def Ci C .o. ?* i;
-def Rule16Case4 [..] -> "-" || Ci _ [a | o] "$"; # TODO: fix bc I removed $
+def Ci C .o. ?* i; # qui, gui, gi
+def C1 [ l | n | p | t | b | d | f | v | s | ç | z | j | x | r]; # TODO: defined based on C
+def Rule16Case4 [..] -> "-" || Ci | [C1 i] _ [a | o] .#.;
 
 # def Rule17Case6 ?*;
 
